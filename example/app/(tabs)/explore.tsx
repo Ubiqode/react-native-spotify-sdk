@@ -1,40 +1,39 @@
-import ParallaxScrollView from '@/components/ParallaxScrollView'
-import { ThemedText } from '@/components/ThemedText'
-import { IconSymbol } from '@/components/ui/IconSymbol'
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { IconSymbol } from '@/components/ui/IconSymbol';
 
-import { ThemedView } from '@/components/ThemedView'
-import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Button, StyleSheet } from 'react-native'
-import { useSpotify } from '../../../package/src/hooks/useSpotify'
-import { RepeatMode } from '../../../package/src/types'
+import { ThemedView } from '@/components/ThemedView';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Button, StyleSheet } from 'react-native';
+import { useSpotify, type RepeatMode } from 'react-native-spotify-sdk';
 
 // Replace with your own Spotify credentials
-const SPOTIFY_CLIENT_ID = 'your-spotify-client-id'
-const SPOTIFY_REDIRECT_URL = 'your-app-scheme://spotify-auth-callback'
+const SPOTIFY_CLIENT_ID = 'your-spotify-client-id';
+const SPOTIFY_REDIRECT_URL = 'example://spotify-auth-callback';
 
-const SpotifyPlayerExample: React.FC = () => {
-  const spotify = useSpotify()
-  const [currentTime, setCurrentTime] = useState<string>('0:00')
-  const [totalTime, setTotalTime] = useState<string>('0:00')
+export default function ExploreScreen() {
+  const spotify = useSpotify();
+  const [currentTime, setCurrentTime] = useState<string>('0:00');
+  const [totalTime, setTotalTime] = useState<string>('0:00');
 
   // Format milliseconds to mm:ss
   const formatTime = (ms: number) => {
-    const totalSeconds = Math.floor(ms / 1000)
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = totalSeconds % 60
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`
-  }
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   // Update time display
   useEffect(() => {
     if (spotify.playerState) {
-      setCurrentTime(formatTime(spotify.playerState.playbackPosition))
+      setCurrentTime(formatTime(spotify.playerState.playbackPosition));
 
       if (spotify.playerState.track) {
-        setTotalTime(formatTime(spotify.playerState.track.duration))
+        setTotalTime(formatTime(spotify.playerState.track.duration));
       }
     }
-  }, [spotify.playerState])
+  }, [spotify.playerState]);
 
   // Handle connect button
   const handleConnect = async () => {
@@ -49,22 +48,22 @@ const SpotifyPlayerExample: React.FC = () => {
           'user-modify-playback-state',
           'user-read-currently-playing',
         ],
-      })
+      });
     } catch (error) {
-      console.error('Failed to connect:', error)
+      console.error('Failed to connect:', error);
     }
-  }
+  };
 
   // Play a sample track
   const playSampleTrack = async () => {
     try {
       await spotify.play({
         uri: 'spotify:track:0VjIjW4GlUZAMYd2vXMi3b', // Sample track URI
-      })
+      });
     } catch (error) {
-      console.error('Failed to play track:', error)
+      console.error('Failed to play track:', error);
     }
-  }
+  };
 
   if (spotify.isConnecting) {
     return (
@@ -72,7 +71,7 @@ const SpotifyPlayerExample: React.FC = () => {
         <ActivityIndicator size="large" color="#1DB954" />
         <ThemedText style={styles.text}>Connecting to Spotify...</ThemedText>
       </ThemedView>
-    )
+    );
   }
 
   if (!spotify.isConnected) {
@@ -90,7 +89,7 @@ const SpotifyPlayerExample: React.FC = () => {
           </ThemedText>
         )}
       </ThemedView>
-    )
+    );
   }
 
   return (
@@ -167,7 +166,7 @@ const SpotifyPlayerExample: React.FC = () => {
             spotify.setRepeatMode(
               spotify.playerState?.repeating
                 ? RepeatMode.OFF
-                : RepeatMode.CONTEXT
+                : RepeatMode.CONTEXT,
             )
           }
           color="#1DB954"
@@ -177,7 +176,7 @@ const SpotifyPlayerExample: React.FC = () => {
       {/* Disconnect Button */}
       <Button title="Disconnect" onPress={spotify.disconnect} color="#E74C3C" />
     </ParallaxScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -251,6 +250,4 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     gap: 10,
   },
-})
-
-export default SpotifyPlayerExample
+});

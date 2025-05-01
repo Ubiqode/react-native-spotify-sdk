@@ -3,9 +3,9 @@
     "name": "example",
     "slug": "example",
     "version": "1.0.0",
+    "scheme": "example",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "example",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -13,6 +13,15 @@
       "bundleIdentifier": "com.damianlajara.example"
     },
     "android": {
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "category": ["DEFAULT", "BROWSABLE"],
+          "data": {
+            "scheme": "example"
+          }
+        }
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"

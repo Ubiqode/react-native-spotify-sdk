@@ -6,6 +6,7 @@
     "example"
   ],
   "scripts": {
+    "prebuild": "bun run --cwd package prebuild",
     "build": "bun run --cwd package build",
     "example": "bun run --cwd example start",
     "test": "bun run --cwd package test",

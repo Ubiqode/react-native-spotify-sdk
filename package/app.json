@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.damianlajara.reactnativespotifysdk"
+  },
+  "ios": {
+    "bundleIdentifier": "com.damianlajara.reactnativespotifysdk"
+  }
+}

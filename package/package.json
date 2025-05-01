@@ -32,7 +32,11 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
     "typescript": "tsc",
-    "specs": "bun nitro-codegen --logLevel=\"debug\""
+    "specs": "bun nitro-codegen --logLevel=\"debug\"",
+    "prebuild": "expo prebuild",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "build": "bun typecheck && bob build"
   },
   "keywords": [
     "react-native",
@@ -103,5 +107,10 @@
     "trailingComma": "es5",
     "useTabs": false,
     "semi": false
+  },
+  "dependencies": {
+    "expo": "~53.0.4",
+    "react": "19.0.0",
+    "react-native": "0.79.1"
   }
 }
