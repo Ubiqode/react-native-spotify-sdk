@@ -1,6 +1,6 @@
 {
   "name": "nitro-rn-spotify",
-  "private": true,
+  "private": false,
   "workspaces": [
     "package",
     "example"
@@ -8,6 +8,7 @@
   "scripts": {
     "prebuild": "bun run --cwd package prebuild",
     "build": "bun run --cwd package build",
+    "run:ios": "bun run --cwd package ios",
     "example": "bun run --cwd example start",
     "test": "bun run --cwd package test",
     "clean": "bun run --cwd package clean && bun run --cwd example clean"

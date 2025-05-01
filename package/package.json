@@ -35,8 +35,7 @@
     "specs": "bun nitro-codegen --logLevel=\"debug\"",
     "prebuild": "expo prebuild",
     "android": "expo run:android",
-    "ios": "expo run:ios",
-    "build": "bun typecheck && bob build"
+    "ios": "expo run:ios"
   },
   "keywords": [
     "react-native",

@@ -18,6 +18,8 @@
 #include "JHybridSpotifyAuthSpec.hpp"
 #include "JHybridSpotifyPlayerSpec.hpp"
 #include "JFunc_void_PlayerState.hpp"
+#include <NitroModules/JNISharedPtr.hpp>
+#include <NitroModules/DefaultConstructableObject.hpp>
 
 namespace margelo::nitro::spotifysdk {
 
@@ -33,7 +35,24 @@ int initialize(JavaVM* vm) {
     margelo::nitro::spotifysdk::JFunc_void_PlayerState_cxx::registerNatives();
 
     // Register Nitro Hybrid Objects
-    
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "SpotifyPlayer",
+      []() -> std::shared_ptr<HybridObject> {
+        static DefaultConstructableObject<JHybridSpotifyPlayerSpec::javaobject> object("com/margelo/nitro/spotifysdk/SpotifyPlayer");
+        auto instance = object.create();
+        auto globalRef = jni::make_global(instance);
+        return JNISharedPtr::make_shared_from_jni<JHybridSpotifyPlayerSpec>(globalRef);
+      }
+    );
+    HybridObjectRegistry::registerHybridObjectConstructor(
+      "SpotifyAuth",
+      []() -> std::shared_ptr<HybridObject> {
+        static DefaultConstructableObject<JHybridSpotifyAuthSpec::javaobject> object("com/margelo/nitro/spotifysdk/SpotifyAuth");
+        auto instance = object.create();
+        auto globalRef = jni::make_global(instance);
+        return JNISharedPtr::make_shared_from_jni<JHybridSpotifyAuthSpec>(globalRef);
+      }
+    );
   });
 }
 
