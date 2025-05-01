@@ -1,52 +1,69 @@
 {
-  "expo": {
-    "name": "example",
-    "slug": "example",
-    "version": "1.0.0",
-    "scheme": "example",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.damianlajara.example"
-    },
-    "android": {
-      "intentFilters": [
-        {
-          "action": "VIEW",
-          "category": ["DEFAULT", "BROWSABLE"],
-          "data": {
-            "scheme": "example"
-          }
-        }
-      ],
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
-  }
+	"expo": {
+		"name": "example",
+		"slug": "example",
+		"version": "1.0.0",
+		"scheme": "example",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"userInterfaceStyle": "automatic",
+		"newArchEnabled": true,
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.damianlajara.example"
+		},
+		"android": {
+			"intentFilters": [
+				{
+					"action": "VIEW",
+					"category": ["DEFAULT", "BROWSABLE"],
+					"data": {
+						"scheme": "example"
+					}
+				},
+				{
+					"action": "VIEW",
+					"category": ["DEFAULT", "BROWSABLE"],
+					"data": {
+						"scheme": "example"
+					}
+				}
+			],
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			},
+			"edgeToEdgeEnabled": true,
+			"package": "com.damianlajara.example"
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "static",
+			"favicon": "./assets/images/favicon.png"
+		},
+		"plugins": [
+			"expo-router",
+			"./plugins/withIosDeploymentTarget16",
+			[
+				"expo-splash-screen",
+				{
+					"image": "./assets/images/splash-icon.png",
+					"imageWidth": 200,
+					"resizeMode": "contain",
+					"backgroundColor": "#ffffff"
+				}
+			],
+			[
+				"expo-build-properties",
+				{
+					"ios": {
+						"deploymentTarget": "16.0"
+					}
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true
+		}
+	}
 }
