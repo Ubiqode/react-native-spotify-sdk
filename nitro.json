@@ -1,19 +1,22 @@
 {
   "$schema": "https://nitro.margelo.com/nitro.schema.json",
-  "cxxNamespace": [
-    "spotifysdk"
-  ],
+  "cxxNamespace": ["spotifysdk"],
   "ios": {
     "iosModuleName": "NitroSpotifySdk"
   },
   "android": {
-    "androidNamespace": [
-      "spotifysdk"
-    ],
+    "androidNamespace": ["spotifysdk"],
     "androidCxxLibName": "NitroSpotifySdk"
   },
-  "autolinking": {},
-  "ignorePaths": [
-    "**/node_modules"
-  ]
+  "autolinking": {
+    "SpotifyPlayer": {
+      "swift": "SpotifyPlayer",
+      "kotlin": "SpotifyPlayer"
+    },
+    "SpotifyAuth": {
+      "swift": "SpotifyAuth",
+      "kotlin": "SpotifyAuth"
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
 }
