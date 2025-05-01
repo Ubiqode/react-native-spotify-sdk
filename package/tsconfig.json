@@ -1,11 +1,9 @@
 {
-  "include": [
-    "src"
-  ],
+  "include": ["package/src"],
   "compilerOptions": {
     "composite": true,
     "outDir": "lib",
-    "rootDir": "src",
+    "rootDir": "package/src",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,

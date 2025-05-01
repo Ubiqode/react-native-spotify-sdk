@@ -5,8 +5,8 @@ import { IconSymbol } from '@/components/ui/IconSymbol'
 import { ThemedView } from '@/components/ThemedView'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Button, StyleSheet } from 'react-native'
-import { useSpotify } from '../../../src/hooks/useSpotify'
-import { RepeatMode } from '../../../src/types'
+import { useSpotify } from '../../../package/src/hooks/useSpotify'
+import { RepeatMode } from '../../../package/src/types'
 
 // Replace with your own Spotify credentials
 const SPOTIFY_CLIENT_ID = 'your-spotify-client-id'
