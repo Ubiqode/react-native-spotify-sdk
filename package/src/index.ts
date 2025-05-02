@@ -2,8 +2,8 @@
 export * from './types'
 
 // Export hybrid objects
-export { HybridSpotifyAuth } from './lib/spotifyAuth'
-export { HybridSpotifyPlayer } from './lib/spotifyPlayer'
+export * from './SpotifyAuth'
+export * from './SpotifyPlayer'
 
 // Export hook
 export { useSpotify } from './hooks/useSpotify'

@@ -2,13 +2,17 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import { useSpotify, type RepeatMode } from '@ubiqode/react-native-spotify-sdk';
 import React, { useEffect, useState, type FC } from 'react';
 import { ActivityIndicator, Button, StyleSheet } from 'react-native';
+import { RepeatMode, useSpotify } from 'react-native-spotify-sdk';
 
-// Replace with your own Spotify credentials
-const SPOTIFY_CLIENT_ID = 'your-spotify-client-id';
-const SPOTIFY_REDIRECT_URL = 'example://spotify-auth-callback';
+const SPOTIFY_CLIENT_ID = process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID as
+  | string
+  | 'spotify-client-id';
+
+const SPOTIFY_REDIRECT_URL = process.env.EXPO_PUBLIC_SPOTIFY_REDIRECT_URL as
+  | string
+  | 'example://spotify-auth-callback';
 
 const ExploreScreen: FC = () => {
   const spotify = useSpotify();

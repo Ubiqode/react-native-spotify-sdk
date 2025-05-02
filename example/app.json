@@ -26,7 +26,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.damianlajara.example"
     },
     "web": {
       "bundler": "metro",
@@ -35,6 +36,7 @@
     },
     "plugins": [
       "expo-router",
+      "./plugins/withIosDeploymentTarget16",
       [
         "expo-splash-screen",
         {
@@ -42,6 +44,14 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "16.0"
+          }
         }
       ]
     ],
