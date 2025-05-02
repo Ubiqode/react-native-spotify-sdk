@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react'
-import { spotifyAuth } from '../lib/spotifyAuth'
 import type { SpotifyPlayer } from '../specs/Spotify.nitro'
+import { SpotifyAuth } from '../SpotifyAuth'
 import type {
   ConnectionOptions,
   PlaybackOptions,
@@ -71,7 +71,7 @@ export function useSpotify(): SpotifyHookResult {
       setConnectionError(null)
 
       try {
-        const player = await spotifyAuth.connect(options)
+        const player = await SpotifyAuth.connect(options)
         playerRef.current = player
         setupPlayerListener(player)
         setIsConnected(true)
@@ -91,7 +91,7 @@ export function useSpotify(): SpotifyHookResult {
     if (!isConnected) return
 
     try {
-      await spotifyAuth.disconnect()
+      await SpotifyAuth.disconnect()
       playerRef.current = null
       setIsConnected(false)
       setPlayerState(null)
@@ -106,7 +106,7 @@ export function useSpotify(): SpotifyHookResult {
     if (isConnected) return
 
     try {
-      await spotifyAuth.reconnect()
+      await SpotifyAuth.reconnect()
       setIsConnected(true)
     } catch (error) {
       console.error('Error reconnecting:', error)

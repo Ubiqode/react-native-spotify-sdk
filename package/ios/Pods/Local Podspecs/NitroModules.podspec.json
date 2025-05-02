@@ -1,0 +1,126 @@
+{
+  "name": "NitroModules",
+  "version": "0.25.2",
+  "summary": "Insanely fast native C++, Swift or Kotlin modules with a statically compiled binding layer to JSI.",
+  "homepage": "https://github.com/mrousavy/nitro#readme",
+  "license": "MIT",
+  "authors": "Marc Rousavy <me@mrousavy.com> (https://github.com/mrousavy)",
+  "source": {
+    "git": "https://github.com/mrousavy/nitro.git",
+    "tag": "0.25.2"
+  },
+  "platforms": {
+    "ios": "15.1",
+    "visionos": "1.0",
+    "osx": "10.13",
+    "tvos": "13.4"
+  },
+  "source_files": [
+    "cpp/**/*.{h,hpp}",
+    "cpp/**/*.{c,cpp}",
+    "ios/**/*.{h,hpp}",
+    "ios/**/*.{c,cpp}",
+    "ios/**/*.{m,mm}",
+    "ios/**/*.swift"
+  ],
+  "public_header_files": [
+    "cpp/core/AnyMap.hpp",
+    "cpp/core/ArrayBuffer.hpp",
+    "cpp/core/HybridObject.hpp",
+    "cpp/core/Promise.hpp",
+    "cpp/entrypoint/HybridNitroModulesProxy.hpp",
+    "cpp/entrypoint/InstallNitro.hpp",
+    "cpp/registry/HybridObjectRegistry.hpp",
+    "cpp/jsi/JSIConverter.hpp",
+    "cpp/platform/NitroLogger.hpp",
+    "cpp/threading/Dispatcher.hpp",
+    "cpp/utils/JSCallback.hpp",
+    "cpp/utils/NitroHash.hpp",
+    "cpp/utils/NitroDefines.hpp",
+    "cpp/views/CachedProp.hpp",
+    "ios/core/ArrayBufferHolder.hpp",
+    "ios/core/AnyMapHolder.hpp",
+    "ios/core/PromiseHolder.hpp",
+    "ios/utils/Result.hpp",
+    "ios/utils/RuntimeError.hpp",
+    "ios/utils/SwiftClosure.hpp"
+  ],
+  "pod_target_xcconfig": {
+    "CLANG_CXX_LANGUAGE_STANDARD": "c++20",
+    "SWIFT_OBJC_INTEROP_MODE": "objcxx",
+    "DEFINES_MODULE": "YES",
+    "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) FOLLY_NO_CONFIG FOLLY_CFG_NO_COROUTINES",
+    "HEADER_SEARCH_PATHS": "\"$(PODS_ROOT)/boost\" \"$(PODS_ROOT)/Headers/Private/Yoga\"",
+    "OTHER_CPLUSPLUSFLAGS": "$(inherited) -DRCT_NEW_ARCH_ENABLED=1 -DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_CFG_NO_COROUTINES=1 -DFOLLY_HAVE_CLOCK_GETTIME=1 -Wno-comma -Wno-shorten-64-to-32",
+    "OTHER_SWIFT_FLAGS": "$(inherited) -DRCT_NEW_ARCH_ENABLED"
+  },
+  "dependencies": {
+    "React-jsi": [
+
+    ],
+    "React-callinvoker": [
+
+    ],
+    "React-Core": [
+
+    ],
+    "RCT-Folly": [
+      "2024.11.18.00"
+    ],
+    "glog": [
+
+    ],
+    "React-RCTFabric": [
+
+    ],
+    "ReactCodegen": [
+
+    ],
+    "RCTRequired": [
+
+    ],
+    "RCTTypeSafety": [
+
+    ],
+    "ReactCommon/turbomodule/bridging": [
+
+    ],
+    "ReactCommon/turbomodule/core": [
+
+    ],
+    "React-NativeModulesApple": [
+
+    ],
+    "Yoga": [
+
+    ],
+    "React-Fabric": [
+
+    ],
+    "React-graphics": [
+
+    ],
+    "React-utils": [
+
+    ],
+    "React-featureflags": [
+
+    ],
+    "React-debug": [
+
+    ],
+    "React-ImageManager": [
+
+    ],
+    "React-rendererdebug": [
+
+    ],
+    "DoubleConversion": [
+
+    ],
+    "hermes-engine": [
+
+    ]
+  },
+  "compiler_flags": "-DRCT_NEW_ARCH_ENABLED=1 -DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -DFOLLY_CFG_NO_COROUTINES=1 -DFOLLY_HAVE_CLOCK_GETTIME=1 -Wno-comma -Wno-shorten-64-to-32"
+}
